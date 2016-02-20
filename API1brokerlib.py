@@ -13,7 +13,7 @@ hdr = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML,
 # referral ID
 ref = 3727
 
-class connection:
+class Connection:
     
     token = ""
     
@@ -27,13 +27,15 @@ class connection:
             page = urllib2.urlopen(request)
             content = page.read()
             view = json.loads(content)
-            if view['error']:
-                return view['error_message']
-            return content
+            return view
         except:
             return False
     
     # 1brokers API full python implementation
+    def overview(self):
+		site = "https://1broker.com/api/v1/account/overview.php?token=%s" % self.token
+		return self.request_1b(site)
+		
     def account_info(self):
         site = "https://1broker.com/api/v1/account/info.php?token=%s" % self.token
         return self.request_1b(site)
