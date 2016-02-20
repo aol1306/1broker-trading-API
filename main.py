@@ -101,7 +101,7 @@ def main():
     # getting API token
     api_token = raw_input("Your API token: ")
     
-    api = API1brokerlib.connection(api_token)
+    api = API1brokerlib.Connection(api_token)
     
     get_settings()
     usage()
